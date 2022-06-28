@@ -1,0 +1,2 @@
+# Comands
+- Listar databases: `\l`
