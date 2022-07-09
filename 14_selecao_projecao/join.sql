@@ -58,4 +58,37 @@ FROM CLIENTE
   INNER JOIN TELEFONE
   ON CLIENTE.ID_CLIENTE = TELEFONE.ID_CLIENTE;
 
+/* nome, sexo, bairro, cidade, tipo, numero */
+SELECT CLIENTE.NOME, CLIENTE.SEXO, ENDERECO.BAIRRO, ENDERECO.CIDADE, TELEFONE.TIPO, TELEFONE.NUMERO
+FROM CLIENTE
+  INNER JOIN TELEFONE
+  ON CLIENTE.ID_CLIENTE = TELEFONE.ID_CLIENTE
+  INNER JOIN ENDERECO
+  ON CLIENTE.ID_CLIENTE = ENDERECO.ID_CLIENTE;
+
+ nome  | sexo | bairro  |     cidade     | tipo |  numero   
+-------+------+---------+----------------+------+-----------
+ Celia | F    | Tijuca  | Rio de Janeiro | CEL  | 12345678
+ Celia | F    | Tijuca  | Rio de Janeiro | RES  | 87654321
+ Renan | M    | Andarai | Rio de Janeiro | CEL  | 968701055
+ Ana   | F    | Centro  | São Paulo      | RES  | 968701055
+ Clara | F    | Augusta | São Paulo      | CEL  | 968701055
+
+
+-- OUTRA SINTAXE PARA FAZER O PONTEIRAMENTO "AMBIGUO"
+SELECT C.NOME, C.SEXO, E.BAIRRO, E.CIDADE, T.TIPO, T.NUMERO
+FROM CLIENTE C
+  INNER JOIN TELEFONE T 
+  ON C.ID_CLIENTE = T.ID_CLIENTE
+  INNER JOIN ENDERECO E
+  ON C.ID_CLIENTE = E.ID_CLIENTE;
+
+ nome  | sexo | bairro  |     cidade     | tipo |  numero   
+-------+------+---------+----------------+------+-----------
+ Celia | F    | Tijuca  | Rio de Janeiro | CEL  | 12345678
+ Celia | F    | Tijuca  | Rio de Janeiro | RES  | 87654321
+ Renan | M    | Andarai | Rio de Janeiro | CEL  | 968701055
+ Ana   | F    | Centro  | São Paulo      | RES  | 968701055
+ Clara | F    | Augusta | São Paulo      | CEL  | 968701055
+
 
